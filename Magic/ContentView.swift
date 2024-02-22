@@ -9,13 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isTapped = false
+    @State var time = Date.now
+    @State var isActive = false
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         ZStack {
+            // MARK: - Background Image
+
             Image(.image1)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(height: 300)
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .frame(height: isTapped ? 600 : 300)
+                .frame(width: isTapped ? 393 : 363)
+                .clipShape(RoundedRectangle(cornerRadius: isTapped ? 0 : 20, style: .continuous))
+                .offset(y: isTapped ? -200 : 0)
+
+            // MARK: - The diologe box
+
             VStack {
                 Text("modern architecture, an isometric tiny house, cute illustration, minimalist, vector art, night view")
                     .font(.subheadline)
@@ -56,9 +67,11 @@ struct ContentView: View {
                             .symbolEffect(.pulse)
                         Divider()
                         Image(systemName: "sparkle.magnifyingglass")
-                            .symbolEffect(.scale.up)
+                            .symbolEffect(.scale.up, isActive: isActive)
+
                         Divider()
                         Image(systemName: "face.smiling")
+                            .symbolEffect(.appear, isActive: isActive)
                     }
                     .padding()
                     .frame(height: 44)
@@ -88,25 +101,38 @@ struct ContentView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .padding(20)
-            .offset(y: 80)
+            .offset(y: isTapped ? 220 : 80)
+
+            // MARK: - Buttons
 
             HStack(spacing: 30) {
                 Image(systemName: "wand.and.rays")
                     .frame(width: 44)
                     .symbolEffect(.variableColor.iterative.reversing, options: .speed(0.3))
                     .symbolEffect(.bounce, value: isTapped)
+                    .opacity(isTapped ? 1 : 0)
+                    .blur(radius: isTapped ? 0 : 20)
 
                 Image(systemName: isTapped ? "pause.fill" : "play.fill")
                     .frame(width: 44)
                     .contentTransition(.symbolEffect(.replace))
                     .onTapGesture { _ in
-                        isTapped.toggle()
+                        withAnimation {
+                            isTapped.toggle()
+                        }
                     }
 
                 Image(systemName: "bell.and.waves.left.and.right.fill")
                     .frame(width: 44)
-                    .symbolEffect(.bounce, options: .speed(3).repeat(3), value: isTapped)
+                    .symbolEffect(.bounce, options: .speed(3).repeat(3), value: time)
+                    .opacity(isTapped ? 1 : 0)
+                    .blur(radius: isTapped ? 0 : 20)
+                    .onReceive(timer) { value in
+                        time = value
+                        isActive.toggle()
+                    }
             }
+            .frame(width: isTapped ? 220 : 80)
             .foregroundStyle(.primary, .white)
             .font(.largeTitle)
             .padding(20)
@@ -116,7 +142,7 @@ struct ContentView: View {
                     .strokeBorder(linerGradient)
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .offset(y: -44)
+            .offset(y: isTapped ? 40 : -44)
         }
         .frame(maxWidth: 400)
         .padding(20)
