@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C40C93E2B8721F4002E318F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C40C93D2B8721F4002E318F /* test.swift */; };
 		7CF3FED02B8188B500CA360D /* MagicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF3FECF2B8188B500CA360D /* MagicApp.swift */; };
 		7CF3FED22B8188B500CA360D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF3FED12B8188B500CA360D /* ContentView.swift */; };
 		7CF3FED42B8188B700CA360D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF3FED32B8188B700CA360D /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C40C93D2B8721F4002E318F /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		7CF3FECC2B8188B500CA360D /* Magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF3FECF2B8188B500CA360D /* MagicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicApp.swift; sourceTree = "<group>"; };
 		7CF3FED12B8188B500CA360D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				7CF3FECF2B8188B500CA360D /* MagicApp.swift */,
+				7C40C93D2B8721F4002E318F /* test.swift */,
 				7CF3FED12B8188B500CA360D /* ContentView.swift */,
 				7CF3FED32B8188B700CA360D /* Assets.xcassets */,
 				7CF3FED52B8188B700CA360D /* Preview Content */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF3FED22B8188B500CA360D /* ContentView.swift in Sources */,
+				7C40C93E2B8721F4002E318F /* test.swift in Sources */,
 				7CF3FED02B8188B500CA360D /* MagicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
